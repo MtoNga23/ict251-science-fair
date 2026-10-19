@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Science Fair Project Manager | ICT251</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow">MULUNGUSHI UNIVERSITY · ICT251</p>
+      <h1>Science Fair Project Manager</h1>
+      <p>Register, review, update and remove science fair projects.</p>
+    </div>
+  </header>
+  <main class="layout">
+    <section class="panel form-panel">
+      <div class="section-heading">
+        <div><p class="eyebrow">PROJECT DETAILS</p><h2 id="formTitle">Add a project</h2></div>
+      </div>
+      <div id="message" class="message" role="status" aria-live="polite"></div>
+      <form id="projectForm">
+        <input type="hidden" id="projectId">
+        <label for="project_title">Project title *</label>
+        <input id="project_title" name="project_title" required maxlength="200" placeholder="e.g. Solar-Powered Phone Charger">
+        <label for="student_name">Student name *</label>
+        <input id="student_name" name="student_name" required maxlength="150" placeholder="Full name">
+        <label for="category">Category *</label>
+        <select id="category" name="category" required>
+          <option value="">Choose category</option>
+          <option>Energy</option><option>Environment</option><option>Agriculture</option>
+          <option>Engineering</option><option>Biology</option><option>Computer Science</option><option>Other</option>
+        </select>
+        <label for="description">Description *</label>
+        <textarea id="description" name="description" required rows="3" placeholder="Briefly describe the project"></textarea>
+        <label for="status">Status</label>
+        <select id="status" name="status">
+          <option>Proposed</option><option selected>In Progress</option><option>Completed</option>
+        </select>
+        <div class="form-actions">
+          <button class="primary" type="submit" id="saveButton">Save project</button>
+          <button class="secondary hidden" type="button" id="cancelButton">Cancel edit</button>
+        </div>
+      </form>
+    </section>
+    <section class="panel records-panel">
+      <div class="records-heading">
+        <div><p class="eyebrow">PROJECT REGISTER</p><h2>Saved projects <span id="count" class="count">0</span></h2></div>
+        <button class="secondary" id="refreshButton" type="button">Refresh</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>ID</th><th>Project / Student</th><th>Category</th><th>Status</th><th>Actions</th></tr></thead>
+          <tbody id="projectRows"><tr><td colspan="5" class="empty">Loading projects…</td></tr></tbody>
+        </table>
+      </div>
+      <p class="footnote">Changes are saved through the Node.js REST API to the SQLite database.</p>
+    </section>
+  </main>
+  <footer>ICT251 Activity 4 · Question 13: Science Fair Projects</footer>
+  <script src="app.js"></script>
+</body>
+</html>
